@@ -96,7 +96,7 @@ int main() {
     }
     else
     {
-        std::cout << c << "⋮" << gcd << " => There is no solution" << endl;
+        std::cout << c << "!⋮" << gcd << " => There is no solution" << endl;
     }
     return 0;
 }
