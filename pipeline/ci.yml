@@ -1,0 +1,36 @@
+name: cpp ci pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+      - name: set up GCC
+        run: sudo apt-get update && sudo apt-get install -y g++
+
+      - name: build dioph.cpp
+        run: g++ -std=c++11 dioph.cpp -o dioph 
+
+      - name: build test.cpp
+        run: g++ -std=c++11 test.cpp dioph.cpp -o test 
+
+      - name: run tests
+        run: ./test
+
+      - name: notify slack
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: "ci pipeline failed"
