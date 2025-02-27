@@ -16,8 +16,11 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v3
 
-      - name: set up GCC
-        run: sudo apt-get update && sudo apt-get install -y g++
+      - name: set up line tool
+        run: sudo xcodebuild -license accept
+
+      - name: install g++
+        run: brew install gcc
 
       - name: build dioph.cpp
         run: g++ -std=c++11 dioph.cpp -o dioph 
@@ -28,9 +31,3 @@ jobs:
       - name: run tests
         run: ./test
 
-      - name: notify slack
-        if: failure()
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: "ci pipeline failed"
