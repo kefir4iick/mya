@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: set up line tool
-        run: xcode-select --install
+        run: sudo xcodebuild -license accept
 
       - name: build dioph.cpp
         run: clang++ -o dioph dioph.cpp 
