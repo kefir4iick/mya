@@ -17,16 +17,13 @@ jobs:
         uses: actions/checkout@v3
 
       - name: set up line tool
-        run: sudo xcodebuild -license accept
-
-      - name: install g++
-        run: brew install gcc
+        run: xcode-select --install
 
       - name: build dioph.cpp
-        run: g++ -std=c++11 dioph.cpp -o dioph 
+        run: clang++ -o dioph dioph.cpp 
 
       - name: build test.cpp
-        run: g++ -std=c++11 test.cpp dioph.cpp -o test 
+        run: clang++ -o test test.cpp dioph.cpp 
 
       - name: run tests
         run: ./test
