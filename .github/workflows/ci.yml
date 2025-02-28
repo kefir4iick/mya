@@ -16,9 +16,6 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v3
 
-      - name: install clang
-        run: brew install clang
-
       - name: build dioph.cpp
         run: clang++ -std=c++11 -c dioph.cpp -o dioph.o
       
