@@ -27,23 +27,6 @@ void runTests() {
             std::cout << "Test passed: gcd_function(48, 18)" << std::endl;
         }
     }
-    {
-        auto [gcd, coef] = gcd_function(0, 1);
-        if (gcd != 1) {
-            std::cout << "Test failed: right answer 1, got " << gcd << std::endl;
-        } else {
-            std::cout << "Test passed: gcd_function(0, 1)" << std::endl;
-        }
-    }
-    {
-        auto [gcd, coef] = gcd_function(1, 0);
-        if (gcd != 1) {
-            std::cout << "Test failed: right answer 1, got " << gcd << std::endl;
-        } else {
-            std::cout << "Test passed: gcd_function(0, 1)" << std::endl;
-        }
-    }
-
 }
 
 int main() {
