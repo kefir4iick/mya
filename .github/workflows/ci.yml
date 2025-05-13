@@ -20,7 +20,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: kefir4iick
+          username: "kefir4iick"
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: build and push
